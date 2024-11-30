@@ -9,12 +9,30 @@ const questions = [
             {text: "1964", correct: false},
     
         ]
+    },
+    {
+        question: "What is the biggest animal in the world?",
+        answers: [
+            {text: "African elephant", correct: false},
+            {text: "Giant giraffe", correct: false},
+            {text: "White whale", correct: true},
+            {text: "Mouse", correct: false},
+    
+        ]
     }
 ]
 
 let currentQuestionIndex = 0;
 let questionElement = document.getElementById("question");
 let answerButtons = document.getElementById("answer-buttons");
+let nextButton = document.getElementById("next-btn");
+
+function startQuiz(){
+    currentQuestionIndex = 0;
+    score = 0;
+    nextButton.innerHTML = "Next";
+    showQuestion();
+}
 
 function showQuestion(){
     //question display part
@@ -44,6 +62,18 @@ function selectAnswer(e){
     else{
         selectedButton.classList.add("incorrect");
     }
+}
+
+//Deletes the options from previous question 
+//showQuestion() then makes new buttons
+//using four here as a counter because there is always
+// 4 answers to quizzes
+function next(){
+    for (let i = 0; i < 4; i ++){
+        answerButtons.children[0].remove();
+    }
+    currentQuestionIndex ++;
+    showQuestion();
 }
 
 showQuestion();
