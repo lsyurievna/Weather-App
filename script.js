@@ -35,6 +35,7 @@ function startQuiz(){
 }
 
 function showQuestion(){
+    resetState();
     //question display part
     let currentQuestion = questions[currentQuestionIndex];
     questionElement.innerHTML = currentQuestion.question;
@@ -64,16 +65,33 @@ function selectAnswer(e){
     }
 }
 
-//Deletes the options from previous question 
-//showQuestion() then makes new buttons
-//using four here as a counter because there is always
-// 4 answers to quizzes
-function next(){
-    for (let i = 0; i < 4; i ++){
-        answerButtons.children[0].remove();
+function resetState(){
+    while(answerButtons.firstChild){
+        answerButtons.removeChild(answerButtons.firstChild);
     }
-    currentQuestionIndex ++;
-    showQuestion();
 }
 
-showQuestion();
+function handleNext(){
+    currentQuestionIndex++;
+    if(currentQuestionIndex < questions.length){
+        showQuestion();
+    }
+    else{
+        resetState();
+        questionElement.innerHTML = "Congrats! Quiz is over!";
+        nextButton.innerHTML = "Play Again";
+    }
+}
+
+nextButton.addEventListener("click", ()=> {
+    if(currentQuestionIndex < questions.length){
+        handleNext();
+    }
+    else{
+        startQuiz();
+    }
+})
+
+startQuiz();
+
+
