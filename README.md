@@ -1,1 +1,1 @@
-# Weather-App
+# Weather App, or first time using an API
