@@ -6,7 +6,8 @@ To familiarize myself with APIs.
 ### Things to improve
 - Add error messages in case the city name is typed in wrong
 - Make it pretty
-  
+
+### Version 1.0 
 <img width="294" alt="dec0924-progress" src="https://github.com/user-attachments/assets/b04c344c-25e1-4b40-a50c-5e6e29938ae1">
 
 
